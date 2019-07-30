@@ -1,48 +1,32 @@
 import "reflect-metadata";
+import express from "express";
+import cors from "cors";
+import { ApolloServer } from "apollo-server-express";
 import { importSchema } from "graphql-import";
-import config from "../../ormconfig";
-import { photoResolver } from "./resolvers/Photo";
-
-/**
- * graphQLServer - graphql-yoga || https://github.com/prisma/graphql-yoga/issues/382
- * 
-import { GraphQLServer } from "graphql-yoga";
-*/
-
-import { ApolloServer } from "apollo-server";
 import { createConnection } from "typeorm";
 
-/**
- * GraphQLSERVER - graphql-yoga || https://github.com/prisma/graphql-yoga#usage
- *  */
+import { photoResolver } from "./resolvers/Photo";
+import config from "../../ormconfig";
 
-// console.log(importSchema("schema.graphql"));
+/**
+ * TypeDefs - describes the types/query/mutation/subscribers of the schema
+ *
+ *  Note: TypeGraphql replaces it using buildSchema
+ */
 const typeDefs = importSchema("./server/src/schema.graphql");
 
-// const server = new GraphQLServer({ typeDefs, resolvers });
-// server.start(() => console.log("Server is running on localhost:4000"));
+const app = express();
+app.use(cors());
 
-// const schema = makeExecutableSchema({ typeDefs, resolvers });
-const server = new ApolloServer({ typeDefs, resolvers: [photoResolver] });
+const server = new ApolloServer({
+  typeDefs,
+  resolvers: [photoResolver]
+});
 
-/**
- * https://typeorm.io/#/connection
- *
- * ormconfig.json is enough?
- */
-createConnection(config)
-  .then(() => {
-    server
-      .listen()
-      .then(({ url }) => {
-        console.log(`Apollo Server ready at ${url}`);
-      })
-      .catch(error => {
-        console.log("Apollo server error", error);
-      });
-  })
-  .catch(error => {
-    console.log("TypeOrm create connection to database failed", error);
+server.applyMiddleware({ app, path: "/graphql" });
+
+createConnection(config).then(() => {
+  app.listen({ port: 4000 }, () => {
+    console.log("Apollo Server on http://localhost:4000/graphql");
   });
-
-// createConnection(config);
+});
