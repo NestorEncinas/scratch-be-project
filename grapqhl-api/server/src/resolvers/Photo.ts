@@ -13,7 +13,7 @@ export const photoResolver = {
   },
   Mutation: {
     addUser: async (_, { name }) => {
-      const user = await User.create({
+      const user = User.create({
         name
       });
       console.log("AAAAA", user);

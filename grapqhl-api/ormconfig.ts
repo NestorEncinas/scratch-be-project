@@ -8,7 +8,8 @@ const config: ConnectionOptions = {
   username: process.env.DB_USER,
   password: process.env.PASSWORD,
   database: process.env.database,
-  synchronize: false,
+  synchronize: true,
+  logging: false,
   entities: ["server/src/entity/*.ts"],
   migrations: ["server/src/migrations/*.ts"],
   cli: {

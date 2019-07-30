@@ -17,7 +17,7 @@ import { createConnection } from "typeorm";
  *  */
 
 // console.log(importSchema("schema.graphql"));
-const typeDefs = importSchema("./src/schema.graphql");
+const typeDefs = importSchema("./server/src/schema.graphql");
 
 // const server = new GraphQLServer({ typeDefs, resolvers });
 // server.start(() => console.log("Server is running on localhost:4000"));
