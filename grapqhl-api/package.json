@@ -11,13 +11,21 @@
     "typescript": "3.3.3333"
   },
   "dependencies": {
+    "apollo-server": "^2.7.2",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "graphql-import": "^0.7.1",
     "graphql-yoga": "^1.18.1",
     "mysql": "^2.14.1",
     "reflect-metadata": "^0.1.10",
-    "typeorm": "0.2.18",
+    "typeorm": "^0.2.18",
     "vesper": "^0.1.9"
   },
   "scripts": {
-    "start": "nodemon --exec ts-node src/index.ts"
+    "start": "nodemon --exec ts-node src/index.ts",
+    "typeorm": "ts-node ./node_modules/typeorm/cli.js",
+    "migration:run": "ts-node ./node_modules/typeorm/cli.js -- migration:run",
+    "migration:ts:run": "ts-node ./node_modules/typeorm/cli.js -f ./server/src/ormconfig.ts",
+    "migration:revert": "typeorm -- migration:revert"
   }
 }

@@ -1,5 +1,12 @@
 # Awesome Project Build with TypeORM
 
-For now is connected with graphql-yoga
+Typeorm - ormconfig.json
+Connection to database
 
-Move it to apollo
+index.ts - connected to ApolloServer
+
+Create migration -
+npm run migration:create -- -n 'name'
+
+Run migration -
+npm run migration:ts:run migration:run

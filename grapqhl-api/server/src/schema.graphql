@@ -1,0 +1,21 @@
+type Photo {
+  id: String!
+  name: String!
+}
+
+type User {
+  id: String!
+  name: String!
+  # photo: [Photo!]!
+}
+
+type Query {
+  hello(name: String): String!
+  user(id: String!): User!
+  photo(id: String!): Photo!
+  findUser(id: String!): User!
+}
+
+type Mutation {
+  addUser(name: String!): User
+}
