@@ -10,15 +10,15 @@ export class Photo extends BaseEntity {
   })
   name: string;
 
-  @Column("text")
-  description: string;
+  // @Column("text")
+  // description: string;
 
-  @Column()
-  filename: string;
+  // @Column()
+  // filename: string;
 
-  @Column("double")
-  views: number;
+  // @Column("double")
+  // views: number;
 
-  @Column()
-  isPublished: boolean;
+  // @Column()
+  // isPublished: boolean;
 }

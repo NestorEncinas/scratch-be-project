@@ -5,7 +5,7 @@ import { ApolloServer } from "apollo-server-express";
 import { importSchema } from "graphql-import";
 import { createConnection } from "typeorm";
 
-import { photoResolver } from "./resolvers/Photo";
+import { userResolver } from "./resolvers/User";
 import config from "../../ormconfig";
 
 /**
@@ -20,7 +20,7 @@ app.use(cors());
 
 const server = new ApolloServer({
   typeDefs,
-  resolvers: [photoResolver]
+  resolvers: [userResolver]
 });
 
 server.applyMiddleware({ app, path: "/graphql" });
