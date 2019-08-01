@@ -2,11 +2,14 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   Column,
+  BaseEntity,
   OneToOne,
-  JoinColumn,
-  BaseEntity
+  JoinColumn
 } from "typeorm";
+
 import { Photo } from "./Photo";
+
+type Lazy<T extends object> = Promise<T> | T;
 
 @Entity()
 export class User extends BaseEntity {
@@ -16,13 +19,11 @@ export class User extends BaseEntity {
   @Column()
   name: string;
 
-  // @Column()
-  // lastName: string;
+  @Column("text")
+  password: string;
 
-  // @Column()
-  // age: number;
-
-  // @OneToOne(type => Photo)
-  // @JoinColumn()
-  // photo: Photo;
+  // relation to Photo, where one user has one photo
+  @OneToOne(() => Photo, { cascade: true, lazy: true })
+  @JoinColumn()
+  photo: Lazy<Photo>;
 }

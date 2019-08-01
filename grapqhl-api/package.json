@@ -26,6 +26,7 @@
     "start": "nodemon --exec ts-node server/src/index.ts",
     "typeorm": "ts-node ./node_modules/typeorm/cli.js",
     "migration:run": "ts-node ./node_modules/typeorm/cli.js -- migration:run",
+    "migration:generate": "ts-node ./node_modules/typeorm/cli.js -- migration:generate",
     "migration:ts:run": "ts-node ./node_modules/typeorm/cli.js -f ./server/src/ormconfig.ts",
     "migration:revert": "typeorm -- migration:revert"
   }
