@@ -1,27 +1,27 @@
-type Photo {
-  id: String!
-  name: String!
-}
+# type Photo {
+#   id: String!
+#   name: String!
+# }
 
-type User {
-  id: String!
-  name: String
-  photo: Photo
-}
+# type User {
+#   id: String!
+#   name: String
+#   photo: Photo
+# }
 
-input PhotoInput {
-  name: String!
-}
+# input PhotoInput {
+#   name: String!
+# }
 
-type Query {
-  hello(name: String): String!
-  user(id: String!): User!
-  photo(id: String!): Photo!
-  findUser(id: Int!): User!
-  findPhotoByUser(id: Int!): Photo
-  register(name: String!, password: String!)
-}
+# type Query {
+#   hello(name: String): String!
+#   user(id: String!): User!
+#   photo(id: String!): Photo!
+#   findUser(id: Int!): User!
+#   findPhotoByUser(id: Int!): Photo
+#   register(name: String!, password: String!)
+# }
 
-type Mutation {
-  createUser(name: String!, photoInput: PhotoInput): User
-}
+# type Mutation {
+#   createUser(name: String!, photoInput: PhotoInput): User
+# }

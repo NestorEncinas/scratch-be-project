@@ -1,24 +1,18 @@
 import { Entity, Column, PrimaryGeneratedColumn, BaseEntity } from "typeorm";
+import { ObjectType, Field, ID } from "type-graphql";
 
 @Entity()
-export class Photo extends BaseEntity {
+@ObjectType()
+class Photo extends BaseEntity {
   @PrimaryGeneratedColumn()
+  @Field(() => ID)
   id: string;
 
   @Column({
     length: 100
   })
+  @Field()
   name: string;
-
-  // @Column("text")
-  // description: string;
-
-  // @Column()
-  // filename: string;
-
-  // @Column("double")
-  // views: number;
-
-  // @Column()
-  // isPublished: boolean;
 }
+
+export default Photo;
