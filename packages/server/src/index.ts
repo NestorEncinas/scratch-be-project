@@ -7,7 +7,7 @@ import cookieParser from "cookie-parser";
 import jwt from "jwt-simple";
 
 import UserResolver from "./resolvers/User";
-import config from "../../ormconfig";
+import config from "../ormconfig";
 import { buildSchema } from "type-graphql";
 import User from "./entity/User";
 

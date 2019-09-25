@@ -10,11 +10,11 @@ const config: ConnectionOptions = {
   database: process.env.database,
   synchronize: false,
   logging: false,
-  entities: ["server/src/entity/*.ts"],
-  migrations: ["server/src/migrations/*.ts"],
+  entities: ["src/entity/*.ts"],
+  migrations: ["src/migrations/*.ts"],
   cli: {
-    entitiesDir: "server/src/entity",
-    migrationsDir: "server/src/migrations"
+    entitiesDir: "src/entity",
+    migrationsDir: "src/migrations"
   }
 };
 
